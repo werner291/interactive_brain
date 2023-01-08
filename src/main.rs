@@ -1,3 +1,5 @@
+extern crate core;
+
 mod brain;
 
 use std::iter::once;
@@ -11,9 +13,8 @@ use crate::brain::{Brain, BrainInput, BrainOutput};
 #[derive(Clone, Data, Lens, Default)]
 struct UiState {
     pub input: String,
-    pub output: String
+    pub output: String,
 }
-
 
 fn main() -> Result<(), PlatformError> {
 
@@ -74,13 +75,20 @@ fn ui_builder(input_tx: Sender<BrainInput>) -> impl Widget<UiState> {
             for c in data.input.chars().chain(once('\n')) {
                 input_tx.send(BrainInput::ChatCharacter(c)).unwrap();
             }
+
+        });
+
+    let reward_button = Button::new("Reward")
+        .on_click(move |ctx, data: &mut UiState, env| {
+        });
+
+    let punish_button = Button::new("Punish")
+        .on_click(move |ctx, data: &mut UiState, env| {
         });
 
     Flex::column()
         .with_child(input)
         .with_child(button)
         .with_child(output)
-
-
 
 }
