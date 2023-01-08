@@ -1,0 +1,12 @@
+[package]
+name = "untitled"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+druid = { git = "https://github.com/linebender/druid" }
+ndarray = "0.15.6"
+ordered-float = "3.4.0"
+rand = "0.8.4"
